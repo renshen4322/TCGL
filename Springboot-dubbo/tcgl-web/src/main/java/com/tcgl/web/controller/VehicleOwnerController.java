@@ -50,7 +50,7 @@ public class VehicleOwnerController {
      * @return {@link ResultVo<String>}
      */
     @RequestMapping(value = "insert",method = RequestMethod.POST)
-    public ResultVo<?> insertVehicleOwner(@RequestBody JSONObject param){
+    public ResultVo<?> insertVehicleOwner(@RequestBody VehicleOwnerEntity param){
         return vehicleOwnerService.insertVehicleOwnerAndPayment(param);
     }
 
