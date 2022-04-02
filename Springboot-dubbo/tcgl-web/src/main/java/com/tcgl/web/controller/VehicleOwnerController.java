@@ -10,19 +10,23 @@ import com.tcgl.web.service.VehicleOwnerService;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
+import static java.net.URLEncoder.encode;
 
 
 /**
@@ -61,7 +65,7 @@ public class VehicleOwnerController {
     public void exportVehicleOwner(HttpServletResponse response, @RequestBody Map<String, Object> param) {
         ResultVo<Boolean> resultVo = new ResultVo<>();
         try {
-            ResultVo<Map<String, Object>> vehicleOwnerVo = vehicleOwnerService.exportVehicleOwner(param);
+            ResultVo<Map<String, Object>> vehicleOwnerVo = vehicleOwnerService.exportVehicleOwner((VehicleOwnerEntity) param);
             if (!vehicleOwnerVo.getSuccess()){
                 try {
                     resultVo.setMessage(vehicleOwnerVo.getMessage());
@@ -80,7 +84,7 @@ public class VehicleOwnerController {
             ExcelExportUtil excelExportUtil = new ExcelExportUtil((String[]) vehicleOwnerVo.getResult().get("titles"),(List<Object[]>)vehicleOwnerVo.getResult().get("dataList"),sheetName);
             SXSSFWorkbook sxssfWorkbook = excelExportUtil.exportExport();
             // 如果文件名有中文，必须URL编码
-            String  fileName1 = URLEncoder.encode(sheetName, StandardCharsets.UTF_8);
+            String  fileName1 = encode(sheetName, StandardCharsets.UTF_8);
             response.setContentType("application/vnd.ms-excel");
             response.setHeader("Content-Disposition", "attachment; filename=" + fileName1+".xlsx");
             sxssfWorkbook.write(outputStream);
@@ -119,7 +123,7 @@ public class VehicleOwnerController {
      * 导出车辆以及所有人信息新
      * @param request
      * @param response
-     * @param param
+     * @param
      */
     @RequestMapping("export")
     public void exportTestNew(HttpServletRequest request,HttpServletResponse response, @RequestBody VehicleOwnerEntity vehicleOwnerEntity){
@@ -141,7 +145,7 @@ public class VehicleOwnerController {
             // Content-disposition 告诉浏览器以下载的形式打开
             String header = request.getHeader("User-Agent").toUpperCase();
             if (header.contains("MSIE") || header.contains("TRIDENT") || header.contains("EDGE")) {
-                fileName = URLEncoder.encode(fileName, "utf-8");
+                fileName = encode(fileName, "utf-8");
                 // IE下载文件名空格变+号问题
                 fileName = fileName.replace("+", "%20");
             } else {

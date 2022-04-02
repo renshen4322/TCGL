@@ -17,12 +17,13 @@ dubbo:
 #    protocol: registry
 
 
+
+#  devtools:
+#    livereload:
+#      port: 35971
+#    restart:
+#      enabled: true  #热部署
 spring:
-  devtools:
-    livereload:
-      port: 35971
-    restart:
-      enabled: true  #热部署
   redis:
     host: 127.0.0.1
     port: 6379
@@ -35,15 +36,13 @@ spring:
         max-idle: 8
         max-active: 8
         max-wait: -1
-
 logging:
   level:
     org.springframework: warn
-
 # JWT配置
 jwt:
   # 密匙Key
-  secret: JWTSecret,tcgl
+  secret: JWTSecret,kapai
   # HeaderKey
   tokenHeader: Authorization
   # Token前缀

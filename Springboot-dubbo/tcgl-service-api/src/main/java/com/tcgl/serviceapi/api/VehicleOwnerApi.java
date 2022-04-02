@@ -1,5 +1,6 @@
 package com.tcgl.serviceapi.api;
 
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.tcgl.common.vo.ResultVo;
 import com.tcgl.serviceapi.entity.VehicleOwnerEntity;
@@ -18,16 +19,16 @@ public interface VehicleOwnerApi {
     /**
      * 插入车主
      *
-     * @param param 参数
+     * @param vehicleOwnerEntity 参数
+     * @param vehicleOwnerEntity
      * @return {@link ResultVo<String>}
      */
     ResultVo<?> insertVehicleOwner(VehicleOwnerEntity vehicleOwnerEntity);
 
-
     /**
      * 选择的页面
      *
-     * @param param 参数
+     * @param vehicleOwnerEntity 参数
      * @return {@link ResultVo<IPage<VehicleOwnerEntity>>}
      */
     IPage<VehicleOwnerEntity> selectByPage(VehicleOwnerEntity vehicleOwnerEntity);

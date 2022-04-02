@@ -28,7 +28,7 @@ public class VehicleOwnerServiceImpl implements VehicleOwnerService {
      * @return
      */
     @Override
-    public ResultVo<?>  insertVehicleOwnerAndPayment(JSONObject param) {
+    public ResultVo<?>  insertVehicleOwnerAndPayment(VehicleOwnerEntity param) {
         return vehicleOwnerApi.insertVehicleOwner(param);
     }
 

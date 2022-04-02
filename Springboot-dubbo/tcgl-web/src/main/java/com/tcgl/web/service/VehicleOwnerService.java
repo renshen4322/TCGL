@@ -18,7 +18,7 @@ public interface VehicleOwnerService {
      * @param param
      * @return
      */
-    ResultVo<?> insertVehicleOwnerAndPayment(JSONObject param);
+    ResultVo<?> insertVehicleOwnerAndPayment(VehicleOwnerEntity param);
 
     /**
      * 出口车主
