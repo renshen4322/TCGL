@@ -11,7 +11,7 @@ dubbo:
     port: 20882
   registry:
     protocol: dubbo-provider-registry
-    address: zookeeper://127.0.0.1:2181
+    address: zookeeper://192.168.146.129:2181
     timeout: 60000
 #  monitor:
 #    protocol: registry
@@ -25,9 +25,9 @@ spring:
       enabled: true
   datasource:
     name: tcgl  #数据库名称
-    url: jdbc:mysql://localhost:3306/tcgl?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai #url
+    url: jdbc:mysql://192.168.146.129:3306/tcgl?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai #url
     username: root  #用户名
-    password: 123456  #用户密码
+    password: gu425006  #用户密码
     driver-class-name: com.mysql.cj.jdbc.Driver  #Mysql驱动
     druid:
       filters: stat

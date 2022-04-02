@@ -12,7 +12,7 @@ dubbo:
     port: 20881
   registry:
     protocol: dubbo-consumer-registry
-    address: zookeeper://127.0.0.1:2181
+    address: zookeeper://192.168.146.129:2181
 #  monitor:
 #    protocol: registry
 
@@ -25,9 +25,9 @@ dubbo:
 #      enabled: true  #热部署
 spring:
   redis:
-    host: 127.0.0.1
+    host: 192.168.146.129
     port: 6379
-#    password: redis
+    password: mark123456
     database: 1
     connect-timeout: 10
     jedis:
@@ -42,7 +42,7 @@ logging:
 # JWT配置
 jwt:
   # 密匙Key
-  secret: JWTSecret,kapai
+  secret: JWTSecret,tcgl
   # HeaderKey
   tokenHeader: Authorization
   # Token前缀

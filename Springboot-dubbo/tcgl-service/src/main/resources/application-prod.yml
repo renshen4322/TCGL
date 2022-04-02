@@ -10,7 +10,7 @@ dubbo:
         name: dubbo
         port: 20880
     registry:
-        address: zookeeper://127.0.0.1:2181
+        address: zookeeper://192.168.146.129:2181
         protocol: dubbo-provider-registry
         timeout: 4000000
 mybatis:
@@ -46,6 +46,6 @@ spring:
             timeBetweenEvictionRunsMillis: 60000
             validationQuery: select '1'
         name: test
-        password: Shuguang_Liux1996
-        url: jdbc:mysql://localhost:3306/tcgl?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+        password: gu425006
+        url: jdbc:mysql://192.168.146.129:3306/tcgl?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
         username: root
